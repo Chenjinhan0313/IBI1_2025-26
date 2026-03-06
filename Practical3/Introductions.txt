@@ -1,4 +1,4 @@
-Hello, my name is Rob.
-I like drinking tea and eating chocolate biscuits.
-I am enjoying teaching IBI1 in person again 
-I am happy that I can push my repo from Visual Studio Code to GitHub
+你好，我叫Chen Jinhan.
+我喜欢喝茶和吃巧克力饼干。
+我正在享受再次亲自教授IBI1。
+我很高兴我可以从Visual Studio Code推送我的代码库到GitHub。
