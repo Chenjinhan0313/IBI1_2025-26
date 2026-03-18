@@ -22,7 +22,7 @@ plt.tight_layout()
 #save the figure 
 plt.savefig("gene_expression_chart.png")
 plt.show()
-gene_of_interest="TP53"#This can be modified manually
+gene_of_interest="TP53" #This can be modified manually
 #Check if a gene of interest exists in the dataset and output its expression value or an error message
 if gene_of_interest in gene_expression:
     print("The expression value of this gene is:")
@@ -34,5 +34,5 @@ sum=0
 for i in gene_expression:
     sum+=gene_expression[i]
 average=sum/len(gene_expression)
-print("The average gene	expression level across	all	genes is:")
+print("The average gene expression level across all genes is:")
 print(average)
