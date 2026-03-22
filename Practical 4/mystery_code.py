@@ -1,11 +1,10 @@
 # What does this piece of code do?
-# Answer:calculate the total of 11 randomly imported figures from 1 to 10.  
-
+# Answer:This code generates 11 random integers between 1 and 10 (inclusive),calculates their sum,and prints the total.
 # Import libraries
 # randint allows drawing a random number,
 # e.g. randint(1,5) draws a number between 1 and 5
 from random import randint
-#imports a random interger
+#imports a random integer
 # ceil takes the ceiling of a number, i.e. the next higher integer.
 # e.g. ceil(4.2)=5
 from math import ceil
