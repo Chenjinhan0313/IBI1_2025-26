@@ -1,0 +1,41 @@
+class FoodItem:
+    def __init__(self, name, calories, protein, carbs, fat):
+        self.name = name
+        self.calories = calories
+        self.protein = protein
+        self.carbs = carbs
+        self.fat = fat
+    def __str__(self):
+        return f"{self.name}: {self.calories} cal, {self.protein}g protein, {self.carbs}g carbs, {self.fat}g fat"
+def calculate_total_nutrition(food_list):
+    totals = {"calories": 0,"protein": 0,"carbs": 0,"fat": 0}
+    for item in food_list:
+        totals["calories"] += item.calories
+        totals["protein"] += item.protein
+        totals["carbs"] += item.carbs
+        totals["fat"] += item.fat
+    return totals
+def report_nutrition(food_list):
+    totals = calculate_total_nutrition(food_list)
+    print("24-HOUR NUTRITION REPORT")
+    print(f"Total calories:     {totals['calories']:.1f} cal")
+    print(f"Total protein:      {totals['protein']:.1f} g")
+    print(f"Total carbohydrates:{totals['carbs']:.1f} g")
+    print(f"Total fat:          {totals['fat']:.1f} g")
+    if totals["calories"] > 2500:
+        print("WARNING: Calorie intake exceeds 2500 cal")
+    if totals["fat"] > 90:
+        print("WARNING: Fat intake exceeds 90 g")
+    return totals
+if __name__ == "__main__":
+    apple = FoodItem("Apple", 60, 0.3, 15, 0.5)
+    banana = FoodItem("Banana", 105, 1.3, 27, 0.4)
+    chicken_breast = FoodItem("Chicken Breast", 165, 31.0, 0, 3.6)
+    white_rice = FoodItem("White Rice", 206, 4.3, 45, 0.4)
+    beef_burger = FoodItem("Beef Burger", 500, 25.0, 40, 25.0)
+    cheddar_cheese = FoodItem("Cheddar Cheese", 113, 7.0, 0.5, 9.0)
+    print("Food items consumed today:")
+    foods = [apple, banana, chicken_breast, white_rice, beef_burger, cheddar_cheese]
+    for food in foods:
+        print(f"  - {food}")
+    report_nutrition(foods)
