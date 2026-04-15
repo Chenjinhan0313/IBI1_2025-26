@@ -1,0 +1,7 @@
+It is not easy.
+I tried hard to process the data and generate graphs correctly.
+I enjoyed generating graphs using different colors and correcting my code using simply taught ways.
+I did not enjoy processing the population array in 'spatial-SIR.py' because it was quite easy to forget some points.
+The most important thing I learned is the difference between np.random.choice() and np.random.random()
+np.random.choice() is best used when I need to randomly sample elements from a given 1D array,optionally with specified probabilities.
+np.random.random() is best used when I need to generate random floating-point numbers uniformly distributed in the interval[0.0,1.0]
