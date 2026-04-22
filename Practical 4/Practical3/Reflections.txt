@@ -1,5 +1,0 @@
-Things are tough at the first
-Initially I have trouble commiting my changes of files in vs code to GitHub,but now I know how to do it.
-And everything seems Ok so far.
-But I still can not remenber some details when I do actual operation.
-Hope I will make progress in the future.

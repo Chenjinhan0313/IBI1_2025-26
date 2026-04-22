@@ -1,4 +1,0 @@
-Hello,my name is Chen Jinhan.
-I like drinking tea and eating chocolate biscuits.
-I am enjoying learning IBI1 courses.
-I am happy that I can push my code from Visual Studio Code to GitHub.
