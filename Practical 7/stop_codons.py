@@ -41,4 +41,4 @@ with open('Practical 7/yeast.fa', 'r') as f_in, open('Practical 7/stop_genes.fa'
         if stops:
             f_out.write(f'>{current_gene} {" ".join(sorted(stops))}\n')
             f_out.write(seq + '\n')
-print("Done! Output written to stop_genes.fa")
+print("Done! Output shwon in stop_genes.fa")
