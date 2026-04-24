@@ -32,22 +32,7 @@ print(dalys_data.iloc[0:3,[0,1,3]])#only show the first,second and fourth column
 my_columns=[True,True,False,True]
 print(dalys_data.iloc[0:3,my_columns])
 print('Comment:Year 1998 recorded the maximum DALYs across the first 10 years for which DALYs were recorded in Afghanistan')
-#what if it is shorter?
-my_columns=[True,True,False]
-print(dalys_data.iloc[0:3],my_columns)
-#result:
-#        Entity Code  Year     DALYs
-#0  Afghanistan  AFG  1990  86375.17
-#1  Afghanistan  AFG  1991  83381.07
-#2  Afghanistan  AFG  1992  79890.55 [True, True, False]
-#what if it is longer?
-my_columns=[True,True,False,True,False]
-print(dalys_data.iloc[0:3],my_columns)
-#result:
-#        Entity Code  Year     DALYs
-#0  Afghanistan  AFG  1990  86375.17
-#1  Afghanistan  AFG  1991  83381.07
-#2  Afghanistan  AFG  1992  79890.55 [True, True, False, True, False]
+#if the my_column is shorter or longer,then it will be errors.
 print(dalys_data.loc[2:4,'Year'])#access adta by row nunmers and column names (that is because row don't have names)
 #1. How do you read just the “Year” column, but all the rows from dalys_data?
 dalys_data.loc[:,'Year']
