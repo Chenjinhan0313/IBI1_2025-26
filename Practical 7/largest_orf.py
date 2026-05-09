@@ -2,6 +2,7 @@ seq='AAGAUACAUGCAAGUGGUGUGUCUGUUCUGAGAGGGCCUAAAAG'
 stop_codons = {'UAA', 'UAG', 'UGA'}
 def find_longest_orf(seq):
     max_len = 0
+    longest_orf_seq=''
     i = 0
     while i < len(seq) - 2:
         # find the start codon 'AUG'
@@ -14,9 +15,11 @@ def find_longest_orf(seq):
                     orf_len = j - i + 3
                     if orf_len > max_len:
                         max_len = orf_len
+                        longest_orf_seq=seq[i:j+3]
                     break  # the first stop codon is the end of this ORF
         i += 1
-    return max_len
-longest = find_longest_orf(seq)
-print(f"Longest ORF length: {longest} nucleotides")
+    return max_len,longest_orf_seq
+length,sequence = find_longest_orf(seq)
+print(f"Longest ORF length: {length} nucleotides")
+print(f'Longest ORF sequence:{sequence}')
 
