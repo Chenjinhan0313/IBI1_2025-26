@@ -20,6 +20,7 @@ population[outbreak[0],outbreak[1]]=1
 #3.define infection probability (beta) and recovery probability(gamma)
 beta=0.3
 gamma=0.05
+snapshots={}
 for i in range (100):
     #4.a.create a copy of the current population grid
     new_population=population.copy()
@@ -44,7 +45,25 @@ for i in range (100):
     population=new_population
     #5.as selected time steps,plot the grid to visualize disease spread
     if i in [0,10,30,50,99]:
-        plt.figure(figsize=(6,4),dpi=150)
-        plt.title(f'Time {i}')
-        plt.imshow(population,cmap='viridis',interpolation='nearest')
-        plt.show()
+        snapshots[i]=population.copy()
+# Time 0 in a single picture   
+plt.figure(figsize=(6,4),dpi=150)
+plt.title(f'Time {i}')
+plt.imshow(population, cmap='viridis', interpolation='nearest')
+plt.savefig(f'disease_spread_time_0.png',bbox_inches='tight',dpi=150)
+plt.close()
+# Time 10,30,50,99 place in 2*2 picture
+fig, axes = plt.subplots(2, 2, figsize=(10, 10), dpi=150)
+time_points = [10, 30, 50, 99]
+titles = ['Time 10', 'Time 30', 'Time 50', 'Time 99']
+
+for ax, t, title in zip(axes.flat, time_points, titles):
+    ax.imshow(snapshots[t], cmap='viridis', interpolation='nearest')
+    ax.set_title(title)
+    ax.axis('off')
+
+plt.tight_layout()
+plt.savefig('disease_spread_time_10_99_combined.png', bbox_inches='tight', dpi=150)
+plt.close()
+print("Done! Figures have been saved to figure folder!")
+        
