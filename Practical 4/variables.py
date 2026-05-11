@@ -31,9 +31,11 @@ print(f"2014-2024 population change：{e} million")
 # If first period growth is greater than second period, growth is decelerating
 # Otherwise, growth is accelerating
 if d > e:
+    print('d is larger than e')
     print("Population growth is decelerating")
     # Comment: d > e, growth rate is decreasing, indicating deceleration
 else:
+    print('e is larger than d')
     print("Population growth is accelerating")
     # Comment: d ≤ e, growth rate is increasing or constant, indicating acceleration
 
