@@ -1,5 +1,6 @@
 #create and print a dictionary containing the genes and their expression values.
 gene_expression={"TP53":12.4,"EGFR":15.1,"BRCA1":8.2,"PTEN":5.3,"ESR1":10.7}
+print(gene_expression)
 #add the expression of gene named "MYC"
 gene_expression["MYC"]=11.6
 print("Gene Expression:")
