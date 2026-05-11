@@ -25,7 +25,7 @@ print(f"Initial condition：Day 0，infected students:{infected}")
 while infected < total_students:
     day = day + 1  # days increase 1
     # calculate the newly infected students
-    new_infections = int(infected * growth_rate) # ensure new_infections is integer
+    new_infections = infected * growth_rate 
     # update the total infections
     infected = infected + new_infections
     # ensure infected does not exceed total students
