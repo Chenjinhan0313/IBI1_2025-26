@@ -1,4 +1,6 @@
 import re
+def wrap_sequence(seq,width=60):
+     return '\n'.join([seq[i:i+width] for i in range (0, len(seq),width)])
 with open('Practical 7/yeast.fa', 'r') as f_in, open('Practical 7/stop_genes.fa', 'w') as f_out:
     current_gene_name = None
     current_seq_lines = []
@@ -18,7 +20,7 @@ with open('Practical 7/yeast.fa', 'r') as f_in, open('Practical 7/stop_genes.fa'
                     stops.append('TGA')
                 if stops:
                     f_out.write(f'>{current_gene_name} {" ".join(stops)}\n')
-                    f_out.write(seq + '\n')
+                    f_out.write(wrap_sequence(seq) + '\n')
             # Extract gene name from header line
             match = re.search(r'gene:(\S+)', line)
             if match:
@@ -42,5 +44,5 @@ with open('Practical 7/yeast.fa', 'r') as f_in, open('Practical 7/stop_genes.fa'
                     stops.append('TGA')
         if stops:
             f_out.write(f'>{current_gene_name} {" ".join(stops)}\n')
-            f_out.write(seq + '\n')
+            f_out.write(wrap_sequence(seq) + '\n')
 print("Done! Output shwon in stop_genes.fa")
