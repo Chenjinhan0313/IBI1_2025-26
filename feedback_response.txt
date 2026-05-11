@@ -1,0 +1,6 @@
+The script I have edited: 'variables.py' file in Practical 4 folder.
+Changes I made: I added comments on whether d or e is bigger.
+The scrip I have edited: 'infection.py' file in Practical 4 folder.
+Changes I made: I deleted the process of rounding the numbers of infected people to integers.
+The scrip I have edited: 'gene_expression.py' file in Practical 5 folder.
+Changes I made: I added the print of the dictionary before the new gene was added when it is still 5 genes.
