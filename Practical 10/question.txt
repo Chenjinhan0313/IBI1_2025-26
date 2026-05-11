@@ -1,0 +1,8 @@
+Question: How has the relationship between the DALYs in China and the UK changed over time?
+Are they becoming more similar, less similar?
+the line number where in my main python file the code answer my question starts:61-68
+result:the DALYs in China and the UK becomes more similiar from year 1990 to year 2020.
+Both of the DALYs in China and the UK decreases over time.
+This is what I expect because China has developed a lot in these years and the medical level,environment and conditions have improved a lot.
+UK is more establised in medical system in the last century,so the differences is the largest in 1990.
+But as China improves its medical system,the differences decrease over time.
