@@ -1,5 +1,17 @@
-import numpy as np
+# 1. Create a 100x100 grid of zeros (all susceptible)
+# 2. Randomly choose one cell to be infected (set to 1)
+# 3. Set beta = 0.3, gamma = 0.05
+# 4. For each time step (0 to 99):
+#    a. Copy the current grid
+#    b. Find all infected cells
+#    c. For each infected cell:
+#       i. For each of its 8 neighbours:
+#          - If neighbour is susceptible, infect with probability beta
+#       ii. Recover this infected cell with probability gamma
+#    d. Update grid with the copy
+#    e. At specific times (0,10,30,50,99), plot the gridimport numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 #1.create a 100*100 grid where all individuals are susceptible
 population=np.zeros((100,100))
 #2.randomly choose one position in the grid and set it to infected
