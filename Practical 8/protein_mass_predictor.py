@@ -18,8 +18,7 @@ def calculate_protein_mass(sequence):
         total+=aa_mass[aa]
     return total
 #example function call
-print ('Please input amino acid sequence:')
-user_input=input()
-result=calculate_protein_mass(user_input)
-if result is not None:
-    print(f'Total mass:{result} amu')
+if __name__ == '__main__':
+    example_seq='AGCTY'
+    mass = calculate_protein_mass(example_seq)
+    print(f'Total mass:{ mass } amu')
