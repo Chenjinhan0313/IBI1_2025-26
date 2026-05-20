@@ -1,0 +1,136 @@
+import xml.dom.minidom      # DOM API
+import xml.sax              # SAX API
+from datetime import datetime  # for recording time
+def run_dom(filename):
+    start = datetime.now()  #  begin recording
+
+    # analyse XML files
+    tree = xml.dom.minidom.parse(filename)
+    
+    # find all the <term> element
+    terms = tree.getElementsByTagName("term")
+    
+    # use dictrionary to record the term with the largest is_a number in the namespace
+    best = {
+        "molecular_function": ("", 0),
+        "biological_process": ("", 0),
+        "cellular_component": ("", 0)
+    }
+    
+    for term in terms:
+        ns_nodes = term.getElementsByTagName("namespace")
+        if not ns_nodes:
+            continue
+        namespace = ns_nodes[0].firstChild.nodeValue.strip()
+        
+        # only process three namespaces in best
+        if namespace not in best:
+            continue
+        
+        name_nodes = term.getElementsByTagName("name")
+        if not name_nodes:
+            continue
+        term_name = name_nodes[0].firstChild.nodeValue.strip()
+        
+        is_a_count = len(term.getElementsByTagName("is_a"))
+        
+        #update if the number of this namespace is larger
+        if is_a_count > best[namespace][1]:
+            best[namespace] = (term_name, is_a_count)
+    
+    end = datetime.now()  # stop recording
+    elapsed = end - start
+    
+    # print output
+    print("=== DOM API result ===")
+    for ns, (name, count) in best.items():
+        print(f"  {ns}: '{name}' — is_a number: {count}")
+    print(f"  DOM using time: {elapsed}\n")
+    
+    return elapsed
+
+class GOHandler(xml.sax.ContentHandler):
+    
+    def __init__(self):
+        # initiatize all the variables that need to be trackek
+        self.current_element = ""   # current reading tag
+        self.name = ""              # current term name
+        self.namespace = ""         # current namespace of the term
+        self.is_a_count = 0         # current is_a of the term
+
+        # record the best result of every namespace
+        self.best = {
+            "molecular_function": ("", 0),
+            "biological_process": ("", 0),
+            "cellular_component": ("", 0)
+        }
+    
+    def startElement(self, tag, attributes):
+        
+        self.current_element = tag
+        
+        if tag == "term":
+            # meeting a new term, reset the relevant variables
+            self.name = ""
+            self.namespace = ""
+            self.is_a_count = 0
+        
+        elif tag == "is_a":
+            # meeting is_a tag, count add 1
+            self.is_a_count += 1
+    
+    def characters(self, content):
+        if self.current_element == "name":
+            self.name += content   
+        
+        elif self.current_element == "namespace":
+            self.namespace += content
+    
+    def endElement(self, tag):
+        
+        if tag == "term":
+            # one term ends, revising whether need to update the best record
+            ns = self.namespace.strip()
+            if ns in self.best:
+                if self.is_a_count > self.best[ns][1]:
+                    self.best[ns] = (self.name.strip(), self.is_a_count)
+            
+            # reset namespace（avoid affecting next term）
+            self.namespace = ""
+        
+        # reset current_element
+        self.current_element = ""
+
+
+def run_sax(filename):
+    start = datetime.now()
+    
+    handler = GOHandler()
+    xml.sax.parse(filename, handler)
+    
+    end = datetime.now()
+    elapsed = end - start
+    
+    print("=== SAX API result ===")
+    for ns, (name, count) in handler.best.items():
+        print(f"  {ns}: '{name}' — is_a result: {count}")
+    print(f"  SAX using time: {elapsed}\n")
+    
+    return elapsed
+
+
+if __name__ == "__main__":
+    filename = r"C:\Users\lenovo\.vscode\IBI1_2025-26\Practical 14\go_obo.xml"
+    
+    dom_time = run_dom(filename)
+    sax_time = run_sax(filename)
+    
+    # compare which one is faster
+    if dom_time < sax_time:
+        print("Conclusion: DOM API is faster.")
+    else:
+        print("Conclusion: SAX API is faster.")
+    
+
+    # SAX API ran fastest because it processes the file sequentially
+    # without loading the entire document into memory.
